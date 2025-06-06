@@ -4,6 +4,7 @@ using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250605043523_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,7 +24,6 @@ namespace API.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
 
             modelBuilder.Entity("API.Models.DichVu", b =>
                 {
@@ -84,7 +86,6 @@ namespace API.Migrations
 
                     b.ToTable("LoaiDichVus");
                 });
-
 
             modelBuilder.Entity("API.Models.RefreshToken", b =>
                 {
@@ -334,7 +335,6 @@ namespace API.Migrations
                     b.Navigation("LoaiDichVu");
                 });
 
-
             modelBuilder.Entity("API.Models.RefreshToken", b =>
                 {
                     b.HasOne("API.Models.User", "User")
@@ -397,12 +397,10 @@ namespace API.Migrations
                         .IsRequired();
                 });
 
-
             modelBuilder.Entity("API.Models.LoaiDichVu", b =>
                 {
                     b.Navigation("DichVus");
                 });
-
 #pragma warning restore 612, 618
         }
     }

@@ -11,7 +11,8 @@ namespace API.Data
         public DbSet<User> User { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
         // --------------------------
-       
+        public DbSet<LoaiDichVu> LoaiDichVus { get; set; }
+        public DbSet<DichVu> DichVus { get; set; }
 
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
         {
