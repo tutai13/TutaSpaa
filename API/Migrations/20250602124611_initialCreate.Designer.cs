@@ -4,6 +4,7 @@ using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250602124611_initialCreate")]
+    partial class initialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,70 +24,6 @@ namespace API.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-
-            modelBuilder.Entity("API.Models.DichVu", b =>
-                {
-                    b.Property<int>("DichVuID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DichVuID"));
-
-                    b.Property<decimal>("Gia")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("HinhAnh")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<int>("LoaiDichVuID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("MoTa")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<DateTime>("NgayTao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("TenDichVu")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("ThoiGian")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TrangThai")
-                        .HasColumnType("int");
-
-                    b.HasKey("DichVuID");
-
-                    b.HasIndex("LoaiDichVuID");
-
-                    b.ToTable("DichVus");
-                });
-
-            modelBuilder.Entity("API.Models.LoaiDichVu", b =>
-                {
-                    b.Property<int>("LoaiDichVuID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LoaiDichVuID"));
-
-                    b.Property<string>("TenLoai")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("LoaiDichVuID");
-
-                    b.ToTable("LoaiDichVus");
-                });
-
 
             modelBuilder.Entity("API.Models.RefreshToken", b =>
                 {
@@ -323,18 +262,6 @@ namespace API.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("API.Models.DichVu", b =>
-                {
-                    b.HasOne("API.Models.LoaiDichVu", "LoaiDichVu")
-                        .WithMany("DichVus")
-                        .HasForeignKey("LoaiDichVuID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("LoaiDichVu");
-                });
-
-
             modelBuilder.Entity("API.Models.RefreshToken", b =>
                 {
                     b.HasOne("API.Models.User", "User")
@@ -396,13 +323,6 @@ namespace API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
-
-
-            modelBuilder.Entity("API.Models.LoaiDichVu", b =>
-                {
-                    b.Navigation("DichVus");
-                });
-
 #pragma warning restore 612, 618
         }
     }
