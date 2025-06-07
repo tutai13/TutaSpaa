@@ -78,6 +78,7 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<DichVu>> PostDichVu(DichVu dichVu)
         {
+            dichVu.NgayTao =DateTime.Now;
             _context.DichVus.Add(dichVu);
             await _context.SaveChangesAsync();
 

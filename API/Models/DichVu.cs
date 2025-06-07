@@ -35,7 +35,6 @@ namespace API.Models
         [Required]
         public int LoaiDichVuID { get; set; }
 
-        // ✅ Navigation property, liên kết với khóa ngoại
         [ForeignKey("LoaiDichVuID")]
         [JsonIgnore]
         public LoaiDichVu? LoaiDichVu { get; set; }

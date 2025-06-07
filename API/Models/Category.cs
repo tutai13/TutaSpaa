@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace API.Models
 {
@@ -11,7 +12,9 @@ namespace API.Models
         [StringLength(100)]
         public string CategoryName { get; set; }
 
-        public ICollection<Product> Products { get; set; }
+        [JsonIgnore]
+
+        public ICollection<Product>? Products { get; set; }
 
     }
 }
