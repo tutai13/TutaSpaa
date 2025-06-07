@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryService _categoryService;

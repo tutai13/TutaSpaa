@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace API.Models
 {
@@ -11,7 +12,7 @@ namespace API.Models
         [StringLength(100)]
         public string TenLoai { get; set; }
 
-        // Navigation property: Một loại dịch vụ có nhiều dịch vụ
+        [JsonIgnore]
         public ICollection<DichVu>? DichVus { get; set; }
     }
 }

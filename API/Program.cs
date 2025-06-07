@@ -88,6 +88,7 @@ builder.Services.AddScoped<IProductService, ProductService>();
 
 
 var app = builder.Build();
+app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
 
 // Configure the HTTP request pipeline.
