@@ -406,5 +406,10 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+<<<<<<< Updated upstream
 
 
+=======
+/API/appsettings.json
+/API/appsettings.Development.json
+>>>>>>> Stashed changes

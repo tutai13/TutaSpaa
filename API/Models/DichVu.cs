@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using Microsoft.EntityFrameworkCore;
 namespace API.Models
 {
     public class DichVu
@@ -14,7 +15,8 @@ namespace API.Models
 
         [Required]
         [Range(0, double.MaxValue)]
-        public decimal Gia { get; set; }
+		[Precision(18, 2)]
+		public decimal Gia { get; set; }
 
         [Required]
         public int ThoiGian { get; set; } // phút
