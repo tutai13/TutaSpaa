@@ -15,8 +15,10 @@ namespace API.Data
         public DbSet<DichVu> DichVus { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Category> Categorys { get; set; }
+		public DbSet<InventoryHistory> InventoryHistories { get; set; }
 
-        public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
+
+		public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
         {
 
         }
@@ -32,7 +34,8 @@ namespace API.Data
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
-        }
+			
+		}
 
     }
 
